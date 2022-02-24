@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Utils from "utils";
 
 const defaultAxiosInstance = axios.create();
 defaultAxiosInstance.interceptors.request.use(
@@ -22,14 +23,14 @@ export class HttpService {
      * @property {string} method method of the request, e.g. get, post, put, delete
      * @property {Object} data: payload of the request
      * @property {string} params: parameters of the request
-     * @return {Promise<AxiosResponse>}  return the response of the request
+     * @return {Promise<AxiosResponse>} http response
      */
     call = ({ url, method, data, params }) => new Promise((resolve, reject) => {
         this.axiosInstance.request({ url, method, data, params }).then(response => {
             response.data.code === 0 ? resolve(response.data) : reject(response.data.message);
         }, error => {
-            reject(error.message);
-        })
+            reject(Utils.handleErrorResponse(error));
+        });
     });
 
 }
