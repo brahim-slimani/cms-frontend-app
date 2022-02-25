@@ -1,4 +1,4 @@
-export * from "./login-page"
+export * from "./auth/login-page"
 export * from "./master-page"
-export * from "./company-page"
-export * from "./contact-page"
+export * from "./company/company-page"
+export * from "./contact/contact-page"

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ToastNotification } from 'components/shared';
 
 export const WithLoadingComponent = (WrappedComponent, Promise, Loader) => (props) => {
 
     const LoadingComponent = () => {
 
         const [data, setData] = useState({ result: null, loading: false, error: null });
+        const toastRef = useRef(null);
 
         useEffect(() => {
             setData({ ...data, loading: true });
@@ -12,7 +14,7 @@ export const WithLoadingComponent = (WrappedComponent, Promise, Loader) => (prop
                 setData({ result: response.data, error: null })
             }, error => {
                 setData({ result: null, error: error });
-                alert(error);
+                toastRef.current.showToast({ type: "error", message: error });
             });
         }, []);
 
@@ -22,6 +24,7 @@ export const WithLoadingComponent = (WrappedComponent, Promise, Loader) => (prop
                     data.loading ?
                         Loader : data.result && <WrappedComponent {...props} data={data.result} />
                 }
+                <ToastNotification ref={toastRef} />
             </>
         );
     }

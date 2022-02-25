@@ -23,7 +23,7 @@ export const Sidebar = () => {
             {/* HEADER */}
             <div className="mx-2 my-3">
                 <a href="index">
-                    <img src={logoLight} height="60" alt="img" className='mb-2' />
+                    <img src={logoLight} height="40" alt="img" className='mb-2' />
                 </a>
                 <br />
                 <small className='text-center m-3'>Contact Management System</small>

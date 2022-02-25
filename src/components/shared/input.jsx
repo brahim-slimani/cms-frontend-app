@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField"
 import { FormGroup } from '@mui/material';
 
 export const Input = (props) => {
-    const { id, label, type, className, value, required, onChange, error, helperText } = props;
+    const { id, label, type, className, value, required, onChange, error, helperText, rows, multiline } = props;
     return (
         <FormGroup sx={{ my: 2 }}>
             <TextField
@@ -17,6 +17,8 @@ export const Input = (props) => {
                 required={required}
                 fullWidth
                 error={error}
+                rows={rows}
+                multiline={multiline}
                 helperText={helperText}
             />
         </FormGroup>

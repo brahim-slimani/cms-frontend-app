@@ -10,5 +10,14 @@ class ContactService {
         return httpService.call({ url: "/api/contacts", method: "GET" });
     }
 
+    /**
+     * Add a new contact
+     * @param {Object} payload contact to be created 
+     * @returns {Promise<AxiosResponse>} http response
+     */
+    addContact = (payload) => {
+        return httpService.call({ url: "/api/contact", method: "POST", data: payload });
+    }
+
 }
 export default new ContactService();

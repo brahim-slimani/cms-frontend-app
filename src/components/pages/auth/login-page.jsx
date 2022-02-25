@@ -76,7 +76,7 @@ export const LoginPage = () => {
                                 helperText={formik.touched.password && formik.errors.password}
                             />
                             <CheckBox label="Remember me" />
-                            <CustomButton type="submit" label={Utils.labelTemplate(<><i className='bi bi-check-circle mx-2' />Sign in</>, data.loading, "Logging in...")} />
+                            <CustomButton type="submit" label={Utils.labelTemplate(<><i className='bi bi-check-circle mx-2' />Sign in</>, data.loading, "Logging in...")} className="my-2" />
                         </form>
                         {/* Alert callback response */}
                         {data.error && <Alert severity="error">{data.error}</Alert>}

@@ -61,5 +61,18 @@ class Utils {
         return Buffer.from(str, "base64");
     }
 
+    labelIcon = (icon, label) => {
+        return <><i className={icon} />&nbsp;{label}</>
+    }
+
+    CUSTOM_MESSAGES = {
+        REQUIRED_FIELD: "This field is required!",
+        OPERATION_SUCCESS: "Operation done successfully"
+    }
+
+    CONTACT_TYPES = {
+        Freelancer: "FREELANCER",
+        Employee: "EMPLOYEE"
+    }
 }
 export default new Utils();
