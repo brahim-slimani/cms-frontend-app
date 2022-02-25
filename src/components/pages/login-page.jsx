@@ -4,13 +4,16 @@ import { Input, CheckBox, CustomButton } from "components/shared";
 import { Footer } from "components/layout";
 import { useFormik } from 'formik';
 import * as Yup from "yup";
+import jwtWorker from "utils/jwt-worker";
 import userService from "service/user-service";
 import { Alert } from '@mui/material';
 import Utils from "utils";
+import { useHistory } from 'react-router';
 
 export const LoginPage = () => {
 
     const [data, setData] = React.useState({ loading: false, error: null, token: null });
+    const history = useHistory();
 
     const formik = useFormik({
         initialValues: {
@@ -33,7 +36,9 @@ export const LoginPage = () => {
     const submitLoginForm = (credentials) => {
         setData({ loading: true });
         userService.login(credentials).then(response => {
-            alert(JSON.stringify(response));
+            Promise.resolve(jwtWorker.setTokenInStorage(response.data)).then(() => {
+                history.push("/home");
+            });
         }, error => {
             setData({ ...data, loading: false, error });
         });

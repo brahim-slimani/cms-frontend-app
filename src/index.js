@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { ErrorBoundary } from "components/shared"
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ErrorBoundary>
     <App />
-  </React.StrictMode>,
+  </ErrorBoundary>,
   document.getElementById('root')
 );

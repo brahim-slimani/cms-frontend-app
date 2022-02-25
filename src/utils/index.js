@@ -1,7 +1,9 @@
 import { Loader } from "components/shared";
+import { Buffer } from "buffer";
 
 class Utils {
 
+    webStorage = localStorage;
     /**
      * this method is used to handle the error response within http request
      * @param {Axios<Error>} error Axios error response
@@ -15,13 +17,48 @@ class Utils {
 
     /**
     * custom template with loading state for submit actions
-    * @param {*} template element to be rendered
+    * @param {any} template element to be rendered
     * @param {boolean} loading state of progress
-    * @param {*} message loading message
+    * @param {string} message loading message
     * @returns Loader in progress with custom message | template eleemnt
     */
     labelTemplate = (template, loading, message) => {
         return loading ? <Loader size={20} label={message} /> : template;
+    }
+
+    /**
+     * persist an item in web storage
+     * @param {string} key item key
+     * @param {any} value item value 
+     */
+    setItemToStorage = (key, value) => {
+        this.webStorage.setItem(key, JSON.stringify(value));
+    }
+
+    /**
+     * delete an item from web storage
+     * @param {string} key item key to be deleted
+     */
+    deleteItemFromStorage = (key) => {
+        this.webStorage.removeItem(key);
+    }
+
+    /**
+     * get an item value from web storage
+     * @param {string} key item key to be retrieved
+     * @returns item value
+     */
+    getItemFromLocalStorage = (key) => {
+        return JSON.parse(this.webStorage.getItem(key));
+    }
+
+    /**
+     * decode given base64 string
+     * @param {string} str wrap to be decoded
+     * @returns {string} decoded result
+     */
+    bas64_decode(str) {
+        return Buffer.from(str, "base64");
     }
 
 }
