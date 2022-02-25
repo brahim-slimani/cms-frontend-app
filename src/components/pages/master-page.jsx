@@ -6,11 +6,9 @@ export const MasterPage = (props) => {
     return (
         <RootContainer>
             <Sidebar />
-            <div className="w-100">
+            <div className="w-100" style={{ height: "90vh" }}>
                 <Header />
-                <div id="content">
-                    {children}
-                </div>
+                {children}
             </div>
         </RootContainer>
     );

@@ -1,11 +1,13 @@
 import axios from 'axios';
 import Utils from "utils";
+import jwtWorker from 'utils/jwt-worker';
 
 const defaultAxiosInstance = axios.create();
 defaultAxiosInstance.interceptors.request.use(
     async (config) => {
         config.baseURL = process.env.REACT_APP_API_URL;
         config.timeout = 60000;
+        config.headers.Authorization = jwtWorker.getTokenFromStorage();
         return config;
     },
     error => Promise.reject(error)
