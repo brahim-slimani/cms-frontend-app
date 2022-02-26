@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { DataTable, CustomButton, Popup, ToastNotification, IconBtn } from 'components/shared';
-import { CreateContact, EditContact } from 'components/pages';
+import { CreateContact, EditContact, DeleteContact, ContactAssignment } from 'components/pages';
 import utils from 'utils';
 
 export const WrappedContactList = (props) => {
@@ -18,9 +18,15 @@ export const WrappedContactList = (props) => {
                     setContactAction({ action: "delete", title: "Delete contact" });
                     setTargetContact(item);
                 }}
+                assignCallback={() => {
+                    popupRef.current.openPopup();
+                    setContactAction({ action: "assign", title: "Contact assignement" });
+                    setTargetContact(item);
+                }}
             />;
         return obj;
     }));
+
     const columns = Object.keys(data[0]).filter(item => item !== "companies" && item !== "uuid");
     const toastRef = useRef(null);
     const popupRef = useRef(null);
@@ -56,13 +62,24 @@ export const WrappedContactList = (props) => {
                 return <EditContact
                     contact={targetContact}
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
-                    successEditCallback={successCallbackFn}
+                    successCallback={successCallbackFn}
                     cancelCallback={() => popupRef.current.closePopup()}
                 />
-            default: return "Hello!";
+            case "delete":
+                return <DeleteContact
+                    contact={targetContact}
+                    errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
+                    successCallback={successCallbackFn}
+                    cancelCallback={() => popupRef.current.closePopup()} />
+            case "assign": return <ContactAssignment
+                contact={targetContact}
+                errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
+                successCallback={successCallbackFn}
+                cancelCallback={() => popupRef.current.closePopup()}
+            />
+            default: return <></>;
         }
     }
-
 
     return (
         <>
@@ -81,7 +98,8 @@ const ContactListActions = (props) => {
         <IconBtn
             title="Assign to company"
             icon="bi bi-gear-wide-connected"
-            color="primary" />
+            color="primary"
+            onClick={props.assignCallback} />
         <IconBtn
             title="Edit"
             icon="bi bi-pencil-fill"

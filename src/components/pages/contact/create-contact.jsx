@@ -7,7 +7,7 @@ import contactService from "service/contact-service";
 
 export const CreateContact = (props) => {
 
-    const [contactType, setContactType] = React.useState(utils.CONTACT_TYPES.Freelancer);
+    const [contactType, setContactType] = React.useState();
     const [loading, setLoading] = React.useState(false);
 
     const formik = useFormik({
@@ -15,7 +15,7 @@ export const CreateContact = (props) => {
             firstName: null,
             lastName: null,
             address: null,
-            contactType: utils.CONTACT_TYPES.Freelancer,
+            contactType: null,
             tvaNumber: null,
         },
         validationSchema: Yup.object({
@@ -80,7 +80,8 @@ export const CreateContact = (props) => {
                     helperText={formik.touched.contactType && formik.errors.contactType}
                 />
                 {
-                    formik.values.contactType === utils.CONTACT_TYPES.Freelancer && <Input
+                    formik.values.contactType === utils.CONTACT_TYPES.Freelancer &&
+                    <Input
                         id="tvaNumber"
                         label="Tva number"
                         value={formik.values.tvaNumber}

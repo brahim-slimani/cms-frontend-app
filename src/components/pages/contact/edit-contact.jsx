@@ -43,7 +43,7 @@ export const EditContact = (props) => {
         }
         setLoading(true);
         contactService.editContact(payload).then(response => {
-            props.successEditCallback(response);
+            props.successCallback(response);
         }, error => {
             props.errorCallback(error);
         }).finally(() => setLoading(false));

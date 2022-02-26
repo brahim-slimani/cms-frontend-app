@@ -8,8 +8,8 @@ import Select from '@mui/material/Select';
 export const Dropdown = (props) => {
     const { id, label, value, onChange, items, helperText } = props
     return (
-        <FormControl sx={{ width: "100%" }}>
-            <InputLabel>{label}</InputLabel>
+        <FormControl sx={{ width: "100%" }} error={helperText}>
+            <InputLabel sx={{ marginBottom: 10 }}>{label}</InputLabel>
             <Select
                 id={id}
                 value={value}

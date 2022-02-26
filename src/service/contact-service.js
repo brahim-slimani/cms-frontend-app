@@ -28,5 +28,24 @@ class ContactService {
         return httpService.call({ url: "/api/contact", method: "PATCH", data: payload });
     }
 
+    /**
+     * Delete given contact
+     * @param {string} uuid contact uuid to be deleted
+     * @returns {Promise<AxiosResponse>} http response
+     */
+    deleteContact = (uuid) => {
+        return httpService.call({ url: "/api/contact", method: "DELETE", params: { uuid: uuid } });
+    }
+
+    /**
+     * Assign contact into specific company
+     * @param {string} contact uuid of contact to be assigned
+     * @param {*} company uuid of company
+     * @returns {Promise<AxiosResponse>} http response
+     */
+    assignContact2company = (contact, company) => {
+        return httpService.call({ url: "/api/assign-contact2company", method: "PATCH", params: { 'contact-uuid': contact, 'company-uuid': company } });
+    }
+
 }
 export default new ContactService();
