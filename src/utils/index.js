@@ -64,7 +64,16 @@ class Utils {
     labelIcon = (icon, label) => {
         return <><i className={icon} />&nbsp;{label}</>
     }
-    
+
+    NoItemsTemplate = (label) => {
+        return (
+            <div className="text-center m-3">
+                <i className="bi bi-exclamation-circle" style={{ fontSize: "30px" }} /><br />
+                <span>{label ? label : "No items yet"}</span>
+            </div>
+        )
+    }
+
     CUSTOM_MESSAGES = {
         REQUIRED_FIELD: "This field is required!",
         OPERATION_SUCCESS: "Operation done successfully",
@@ -73,6 +82,15 @@ class Utils {
         ALREADY_ASSIGNED: "This contact is already assigned to the selected company",
         NO_ITEM_SELECTED: "No item has been selected!"
     }
+
+    CONTACT_LIST_COLUMNS = [
+        { label: "FIRST NAME", name: "firstName" },
+        { label: "LAST NAME", name: "lastName" },
+        { label: "CONTACT TYPE", name: "contactType" },
+        { label: "CREATION DATE", name: "createdAt" },
+        { label: "LAST UPDATE DATE", name: "updatedAt" },
+        { label: "ACTIONS", name: "actions" }
+    ]
 
     CONTACT_TYPES = {
         Freelancer: "FREELANCER",

@@ -11,11 +11,26 @@ export const DataTable = (props) => {
         selectableRows: 'none',
         download: false,
         print: false,
+        rowsPerPage: [5],
+        rowsPerPageOptions: [3, 5, 10, 15],
+        jumpToPage: true,
+        textLabels: {
+            pagination: {
+                next: "Next >",
+                previous: "< Previous",
+                rowsPerPage: "Total items Per Page",
+                displayRows: "OF"
+            }
+        }
     }
 
     return (
         <div className='card shadow m-4'>
-            <MuiDataTable title={header} columns={columns} data={data} options={options} />
+            <MuiDataTable
+                title={header}
+                columns={columns}
+                data={data}
+                options={options} />
         </div>
     );
 }

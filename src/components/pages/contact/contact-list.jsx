@@ -1,37 +1,45 @@
 import React, { useRef } from 'react';
 import { DataTable, CustomButton, Popup, ToastNotification, IconBtn } from 'components/shared';
-import { CreateContact, EditContact, DeleteContact, ContactAssignment } from 'components/pages';
+import { CreateContact, EditContact, DeleteContact, ContactAssignment, ContactDetail } from 'components/pages';
 import utils from 'utils';
 
 export const WrappedContactList = (props) => {
-    const [data, setData] = React.useState(props.data.map(item => {
-        let obj = { ...item }; obj["action"] =
-            <ContactListActions
-                contact={item}
-                editCallback={() => {
-                    popupRef.current.openPopup();
-                    setContactAction({ action: "edit", title: "Edit contact" });
-                    setTargetContact(item);
-                }}
-                deleteCallback={() => {
-                    popupRef.current.openPopup();
-                    setContactAction({ action: "delete", title: "Delete contact" });
-                    setTargetContact(item);
-                }}
-                assignCallback={() => {
-                    popupRef.current.openPopup();
-                    setContactAction({ action: "assign", title: "Contact assignement" });
-                    setTargetContact(item);
-                }}
-            />;
-        return obj;
-    }));
-
-    const columns = Object.keys(data[0]).filter(item => item !== "companies" && item !== "uuid");
+    const { data } = props;
+    const [contacts, setContacts] = React.useState();
     const toastRef = useRef(null);
     const popupRef = useRef(null);
     const [contactAction, setContactAction] = React.useState({ action: null, title: null });
     const [targetContact, setTargetContact] = React.useState();
+
+    React.useState(() => {
+        setContacts(data.map(item => {
+            let obj = { ...item }; obj["actions"] =
+                <ContactListActions
+                    contact={item}
+                    editCallback={() => {
+                        popupRef.current.openPopup();
+                        setContactAction({ action: "edit", title: "Edit contact" });
+                        setTargetContact(item);
+                    }}
+                    deleteCallback={() => {
+                        popupRef.current.openPopup();
+                        setContactAction({ action: "delete", title: "Delete contact" });
+                        setTargetContact(item);
+                    }}
+                    assignCallback={() => {
+                        popupRef.current.openPopup();
+                        setContactAction({ action: "assign", title: "Contact assignement" });
+                        setTargetContact(item);
+                    }}
+                    previewCallback={() => {
+                        popupRef.current.openPopup();
+                        setContactAction({ action: "preview", title: "Preview contact" });
+                        setTargetContact(item);
+                    }}
+                />;
+            return obj;
+        }))
+    }, []);
 
     const CreateContactBtn = () => {
         return <div className='col-md-4'>
@@ -71,19 +79,25 @@ export const WrappedContactList = (props) => {
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
                     successCallback={successCallbackFn}
                     cancelCallback={() => popupRef.current.closePopup()} />
-            case "assign": return <ContactAssignment
-                contact={targetContact}
-                errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
-                successCallback={successCallbackFn}
-                cancelCallback={() => popupRef.current.closePopup()}
-            />
+            case "assign":
+                return <ContactAssignment
+                    contact={targetContact}
+                    errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
+                    successCallback={successCallbackFn}
+                    cancelCallback={() => popupRef.current.closePopup()}
+                />
+            case "preview":
+                return <ContactDetail
+                    contact={targetContact}
+                    cancelCallback={() => popupRef.current.closePopup()}
+                />
             default: return <></>;
         }
     }
 
     return (
         <>
-            <DataTable header={<CreateContactBtn />} columns={columns} data={data} />
+            <DataTable header={<CreateContactBtn />} columns={utils.CONTACT_LIST_COLUMNS} data={contacts} />
             <Popup ref={popupRef} title={contactAction.title}>
                 {popupChildren2beRendred()}
             </Popup>
@@ -92,9 +106,13 @@ export const WrappedContactList = (props) => {
     );
 }
 
-
 const ContactListActions = (props) => {
     return <div className='d-flex'>
+        <IconBtn
+            title="Preview contact"
+            icon="bi bi-eye-fill"
+            color="success"
+            onClick={props.previewCallback} />
         <IconBtn
             title="Assign to company"
             icon="bi bi-gear-wide-connected"
