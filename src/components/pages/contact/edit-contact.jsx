@@ -5,18 +5,20 @@ import * as Yup from "yup";
 import utils from "utils";
 import contactService from "service/contact-service";
 
-export const CreateContact = (props) => {
+export const EditContact = (props) => {
 
-    const [contactType, setContactType] = React.useState(utils.CONTACT_TYPES.Freelancer);
+    const { companies, ...contact } = props.contact;
+
+    const [contactType, setContactType] = React.useState(contact.contactType);
     const [loading, setLoading] = React.useState(false);
 
     const formik = useFormik({
         initialValues: {
-            firstName: null,
-            lastName: null,
-            address: null,
-            contactType: utils.CONTACT_TYPES.Freelancer,
-            tvaNumber: null,
+            firstName: contact.firstName,
+            lastName: contact.lastName,
+            address: contact.address,
+            contactType: contact.contactType,
+            tvaNumber: contact.tvaNumber,
         },
         validationSchema: Yup.object({
             firstName: Yup.mixed().required(utils.CUSTOM_MESSAGES.REQUIRED_FIELD),
@@ -26,18 +28,22 @@ export const CreateContact = (props) => {
             tvaNumber: contactType === utils.CONTACT_TYPES.Freelancer && Yup.mixed().required(utils.CUSTOM_MESSAGES.REQUIRED_FIELD),
         }),
         onSubmit: values => {
-            handleSubmit(values);
+            handleSubmit({ ...contact, ...values });
         }
     });
 
     /**
      * contact form submission
-     * @param {Object} contact contact data
+     * @param {Object} payload contact data
      */
-    const handleSubmit = (contact) => {
+    const handleSubmit = (payload) => {
+        if (JSON.stringify(payload) === JSON.stringify(contact)) {
+            props.errorCallback(utils.CUSTOM_MESSAGES.NO_CHANGES_ISSUED, "info");
+            return
+        }
         setLoading(true);
-        contactService.addContact(contact).then(response => {
-            props.successCallback(response);
+        contactService.editContact(payload).then(response => {
+            props.successEditCallback(response);
         }, error => {
             props.errorCallback(error);
         }).finally(() => setLoading(false));

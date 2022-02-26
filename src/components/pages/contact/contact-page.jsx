@@ -1,54 +1,18 @@
-import React, { useRef } from 'react';
-import { DataTable, WithLoadingComponent, Loader, CustomButton, Popup, ToastNotification } from 'components/shared';
+import React from 'react';
+import { WithLoadingComponent, Loader } from 'components/shared';
 import contactService from "service/contact-service";
-import { CreateContact } from 'components/pages/contact/create-contact';
-import utils from 'utils';
+import { WrappedContactList } from 'components/pages/contact/contact-list';
 
 export const ContactPage = () => {
-
+    const [refresh, setRefresh] = React.useState();
     return (
         <div className='scroll-container position-relative' style={{ height: "inherit" }}>
-            <ContactListHoc />
+            <ContactListHoc shouldRefresh={(val) => setRefresh(val)} refresh={refresh} />
         </div>
-    );
-}
-
-const WrappedContactList = (props) => {
-    const [data, setData] = React.useState(props.data);
-    const columns = Object.keys(data[0]).filter(item => item !== "companies" && item !== "uuid");
-    const toastRef = useRef(null);
-    const popupRef = useRef(null);
-
-    const CreateContactBtn = () => {
-        return <div className='col-md-4'>
-            <CustomButton onClick={(e) => {
-                popupRef.current.openPopup();
-            }} label={<><i className='bi bi-plus-circle' />&nbsp;Add contact</>} />
-        </div>
-    }
-
-    const successCallbackFn = (response) => {
-        toastRef.current.showToast({ type: "success", message: utils.CUSTOM_MESSAGES.OPERATION_SUCCESS });
-        popupRef.current.closePopup();
-        setData([...data, response.data]);
-    }
-
-    return (
-        <>
-            <DataTable header={<CreateContactBtn />} columns={columns} data={data} />
-            <Popup ref={popupRef} title="Create contact">
-                <CreateContact
-                    errorCallback={(message) => toastRef.current.showToast({ type: "error", message })}
-                    successCallback={successCallbackFn}
-                    cancelCallback={() => popupRef.current.closePopup()}
-                />
-            </Popup>
-            <ToastNotification ref={toastRef} />
-        </>
     );
 }
 
 const ContactListHoc = (props) => {
-    const WithLoadingHoc = WithLoadingComponent(WrappedContactList, () => contactService.getContacts(), <div style={{ position: "absolute", top: "50%", left: "45%" }}><Loader /></div>)(props);
+    const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedContactList, () => contactService.getContacts(), <div style={{ position: "absolute", top: "50%", left: "45%" }}><Loader /></div>)(props), [props.refresh]);
     return <WithLoadingHoc />
 }

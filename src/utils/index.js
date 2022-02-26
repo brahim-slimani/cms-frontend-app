@@ -64,10 +64,11 @@ class Utils {
     labelIcon = (icon, label) => {
         return <><i className={icon} />&nbsp;{label}</>
     }
-
+    
     CUSTOM_MESSAGES = {
         REQUIRED_FIELD: "This field is required!",
-        OPERATION_SUCCESS: "Operation done successfully"
+        OPERATION_SUCCESS: "Operation done successfully",
+        NO_CHANGES_ISSUED: "No changes has been issued!"
     }
 
     CONTACT_TYPES = {
