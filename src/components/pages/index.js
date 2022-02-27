@@ -1,5 +1,6 @@
-export * from "./auth/login-page"
 export * from "./master-page"
+export * from "./auth/login-page"
+export * from "./auth/logout"
 
 export * from "./contact/contact-page"
 export * from "./contact/create-contact"

@@ -90,7 +90,8 @@ class Utils {
         DELETE_CONTACT_CONRIMATION: "Are you sure you want to delete this contact ?",
         DELETE_COMPANY_CONRIMATION: "Are you sure you want to delete this company ?",
         ALREADY_ASSIGNED: "This contact is already assigned to the selected company",
-        NO_ITEM_SELECTED: "No item has been selected!"
+        NO_ITEM_SELECTED: "No item has been selected!",
+        LOGOUT_CONFIRMATION: "Are you sure you want to log out ?"
     }
 
     CONTACT_LIST_COLUMNS = [

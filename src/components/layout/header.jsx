@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import logo from "assets/image/logo.svg";
 import logoLight from "assets/image/logo-light.svg";
-import { CustomButton } from 'components/shared';
+import { CustomButton, Popup } from 'components/shared';
 import utils from "utils";
+import { DialogContentText } from '@mui/material';
+import { Logout } from "components/pages";
 
 export const Header = () => {
-
+    const logoutPopupRef = useRef();
     return (
         <nav class="navbar navbar-expand-lg navbar-light bg-ligh pt-2 shadow-sm" style={{ background: "#156fde", color: "white" }}>
             <div class="container-fluid">
                 <BurgerButton />
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="right-nav navbar-nav ml-auto nav">
-                        
+                        <div className='nav'>
+                            <CustomButton
+                                size="small"
+                                variant="text"
+                                sx={{ color: "white" }}
+                                onClick={() => logoutPopupRef.current.openPopup()}
+                                label={utils.labelIcon("bi bi-box-arrow-right", "Logout")} />
+                            <Popup ref={logoutPopupRef} title="Logout confirmation">
+                                <DialogContentText>
+                                    {utils.CUSTOM_MESSAGES.LOGOUT_CONFIRMATION}
+                                </DialogContentText>
+                                <Logout cancelCallback={()=>logoutPopupRef.current.closePopup()} />
+                            </Popup>
+                        </div>
                     </ul>
                 </div>
             </div>

@@ -55,7 +55,6 @@ export const CreateCompany = (props) => {
                     error={formik.touched.address && formik.errors.address}
                     helperText={formik.touched.address && formik.errors.address} />
 
-
                 <div className='mt-3'>
                     <CustomButton
                         type="submit"

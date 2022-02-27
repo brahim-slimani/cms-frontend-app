@@ -10,5 +10,13 @@ class UserService {
     login = (credentials) => {
         return httpService.call({ url: "/auth/login", method: "POST", data: credentials });
     }
+
+    /**
+     * Logout service
+     * @returns {Promise<AxiosResponse>} http response
+     */
+    logout = () => {
+        return httpService.call({ url: "/auth/logout", method: "POST" });
+    }
 }
 export default new UserService();
