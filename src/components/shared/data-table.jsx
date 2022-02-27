@@ -1,5 +1,8 @@
 import React from 'react';
 import MuiDataTable from "mui-datatables";
+import { IconBtn } from "components/shared";
+import jwtWorker from 'utils/jwt-worker';
+import utils from "utils";
 
 export const DataTable = (props) => {
 
@@ -11,7 +14,7 @@ export const DataTable = (props) => {
         selectableRows: 'none',
         download: false,
         print: false,
-        rowsPerPage: [5],
+        rowsPerPage: [10],
         rowsPerPageOptions: [3, 5, 10, 15],
         jumpToPage: true,
         textLabels: {
@@ -33,4 +36,34 @@ export const DataTable = (props) => {
                 options={options} />
         </div>
     );
+}
+
+export const TableActionsTemplate = (props) => {
+    return <div className='d-flex'>
+        <IconBtn
+            title="Preview"
+            icon="bi bi-eye-fill"
+            color="success"
+            onClick={props.previewCallback} />
+        {
+            jwtWorker.hasRole(utils.ROLES.Admin) &&
+            <>
+                <IconBtn
+                    title="Assign"
+                    icon="bi bi-gear-wide-connected"
+                    color="primary"
+                    onClick={props.assignCallback} />
+                <IconBtn
+                    title="Edit"
+                    icon="bi bi-pencil-fill"
+                    color="secondary"
+                    onClick={props.editCallback} />
+                <IconBtn
+                    title="Delete"
+                    icon="bi bi-trash"
+                    color="error"
+                    onClick={props.deleteCallback} />
+            </>
+        }
+    </div>
 }

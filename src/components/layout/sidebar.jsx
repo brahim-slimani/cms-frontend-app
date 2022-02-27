@@ -22,7 +22,7 @@ export const Sidebar = () => {
     ]
 
     return (
-        <nav id="sidebar" className="active$">
+        <nav id="sidebar">
             {/* HEADER */}
             <div className="px-2 pt-2 sidebar-header">
                 <a href="index">
@@ -32,7 +32,7 @@ export const Sidebar = () => {
             <div className='my-2 px-3 d-flex' >
                 <Avatar id="profile-avatar" icon={<i className='bi bi-person-fill' />} className="my-auto" />
                 <div id="profile-detail" className='ms-2'>
-                    <span>{`${jwtWorker.getRolesFromToken()[0].authority} ${jwtWorker.getSubFromToken()}`}</span><br />
+                    <span>{`${jwtWorker.getRolesFromToken()[0]} ${jwtWorker.getSubFromToken()}`}</span><br />
                     <small>My Profile</small>
                 </div>
             </div>

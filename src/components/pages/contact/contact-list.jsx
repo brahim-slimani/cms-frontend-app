@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
-import { DataTable, CustomButton, Popup, ToastNotification, IconBtn } from 'components/shared';
+import { DataTable, CustomButton, Popup, ToastNotification, TableActionsTemplate } from 'components/shared';
 import { CreateContact, EditContact, DeleteContact, ContactAssignment, ContactDetail } from 'components/pages';
 import utils from 'utils';
+import jwtWorker from 'utils/jwt-worker';
 
 export const WrappedContactList = (props) => {
     const { data } = props;
@@ -14,7 +15,7 @@ export const WrappedContactList = (props) => {
     React.useState(() => {
         setContacts(data.map(item => {
             let obj = { ...item }; obj["actions"] =
-                <ContactListActions
+                <TableActionsTemplate
                     contact={item}
                     editCallback={() => {
                         popupRef.current.openPopup();
@@ -97,36 +98,11 @@ export const WrappedContactList = (props) => {
 
     return (
         <>
-            <DataTable header={<CreateContactBtn />} columns={utils.CONTACT_LIST_COLUMNS} data={contacts} />
+            <DataTable header={jwtWorker.hasRole(utils.ROLES.Admin) ? <CreateContactBtn /> : "Contact list"} columns={utils.CONTACT_LIST_COLUMNS} data={contacts} />
             <Popup ref={popupRef} title={contactAction.title}>
                 {popupChildren2beRendred()}
             </Popup>
             <ToastNotification ref={toastRef} />
         </>
     );
-}
-
-const ContactListActions = (props) => {
-    return <div className='d-flex'>
-        <IconBtn
-            title="Preview contact"
-            icon="bi bi-eye-fill"
-            color="success"
-            onClick={props.previewCallback} />
-        <IconBtn
-            title="Assign to company"
-            icon="bi bi-gear-wide-connected"
-            color="primary"
-            onClick={props.assignCallback} />
-        <IconBtn
-            title="Edit"
-            icon="bi bi-pencil-fill"
-            color="secondary"
-            onClick={props.editCallback} />
-        <IconBtn
-            title="Delete"
-            icon="bi bi-trash"
-            color="error"
-            onClick={props.deleteCallback} />
-    </div>
 }

@@ -12,3 +12,4 @@ const ContactListHoc = (props) => {
     const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedContactList, () => contactService.getContacts(), <div style={{ position: "absolute", top: "50%", left: "45%" }}><Loader /></div>)(props), [props.refresh]);
     return <WithLoadingHoc />
 }
+

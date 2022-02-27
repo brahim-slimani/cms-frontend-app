@@ -4,7 +4,6 @@ import jwtWorker from "utils/jwt-worker";
 
 class Utils {
 
-    webStorage = localStorage;
     /**
      * this method is used to handle the error response within http request
      * @param {Axios<Error>} error Axios error response
@@ -27,11 +26,13 @@ class Utils {
         return loading ? <Loader size={20} label={message} /> : template;
     }
 
+
     /**
      * persist an item in web storage
      * @param {string} key item key
      * @param {any} value item value 
      */
+    webStorage = localStorage;
     setItemToStorage = (key, value) => {
         this.webStorage.setItem(key, JSON.stringify(value));
     }
@@ -114,6 +115,11 @@ class Utils {
     CONTACT_TYPES = {
         Freelancer: "FREELANCER",
         Employee: "EMPLOYEE"
+    }
+
+    ROLES = {
+        Admin: "ADMIN",
+        User: "USER"
     }
 }
 export default new Utils();
