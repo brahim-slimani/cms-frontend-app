@@ -1,0 +1,19 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+jobs: 
+  build: 
+    docker:       
+      - image: circleci/node:12.13.1    
+    working_directory: ~/repo
+    steps:      
+      - checkout
+      - run: npm cache clean --force
+      - run: npm install
+      - run: CI=false npm run build
+      - run:
+          name: git conf
+          command: |
+            git config --global user.email "slimani.ibr@gmail.com"
+            git config --global user.name "Slimani-Ibrahim"
+      - run: npm run deploy

@@ -1,5 +1,5 @@
 import React from 'react';
-import logoLight from "assets/image/logo.svg";
+import logoLight from "assets/svg/logo.svg";
 import { ROUTES_PATH } from "components/navigation/routes";
 import { SiderItem } from 'components/layout';
 import { Avatar } from '@mui/material';

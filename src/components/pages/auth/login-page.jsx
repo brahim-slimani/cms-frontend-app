@@ -1,5 +1,5 @@
 import React from 'react';
-import image_preview from "assets/image/flat_preview_remote.svg";
+import image_preview from "assets/svg/flat_preview_remote.svg";
 import { Input, CheckBox, CustomButton } from "components/shared";
 import { Footer } from "components/layout";
 import { useFormik } from 'formik';

@@ -72,6 +72,6 @@ const WrappedComapyList = (props) => {
 }
 
 const CompanyListHoc = (props) => {
-    const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedComapyList, () => companyService.getCompanies(), <div style={{ position: "absolute", top: "50%", left: "45%" }}><Loader /></div>)(props), []);
+    const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedComapyList, () => companyService.getCompanies(), <div className="my-3" style={{ marginLeft: "45%" }}> <Loader size={30} /> </div>)(props), []);
     return <WithLoadingHoc />
 }

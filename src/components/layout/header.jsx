@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import logo from "assets/image/logo.svg";
-import logoLight from "assets/image/logo-light.svg";
+import logo from "assets/svg/logo.svg";
+import logoLight from "assets/svg/logo-light.svg";
 import { CustomButton, Popup } from 'components/shared';
 import utils from "utils";
 import { DialogContentText } from '@mui/material';

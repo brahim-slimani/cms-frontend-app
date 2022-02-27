@@ -1,7 +1,7 @@
 import { Loader } from "components/shared";
 import { Buffer } from "buffer";
 import jwtWorker from "utils/jwt-worker";
-import mobileViewPort from "assets/image/mobile-viewport.svg";
+import mobileViewPort from "assets/svg/mobile-viewport.svg";
 
 class Utils {
 

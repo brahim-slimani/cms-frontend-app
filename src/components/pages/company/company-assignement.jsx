@@ -35,7 +35,7 @@ export const CompanyAssignment = (props) => {
     return (
         <div>
             <DialogContentText>
-                Assign contact to the company {<Chip label={`${company.tvaNumber}`} />} 
+                Assign contact to the company {<Chip label={`${company.tvaNumber}`} />}
             </DialogContentText>
 
             <ContactListHoc selectCallback={(contact) => setContact(contact)} />
@@ -71,6 +71,6 @@ const WrappedContactList = (props) => {
 }
 
 const ContactListHoc = (props) => {
-    const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedContactList, () => contactService.getContacts(), <div style={{ position: "absolute", top: "50%", left: "45%" }}><Loader /></div>)(props), []);
+    const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedContactList, () => contactService.getContacts(), <div className="my-3" style={{ marginLeft: "45%" }}> <Loader size={30} /> </div>)(props), []);
     return <WithLoadingHoc />
 }
