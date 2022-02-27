@@ -109,8 +109,7 @@ $primary:#0d61c9;
 				padding: 9px 10px;
 				display: block;
 				color: rgba(255, 255, 255, 1);
-
-				//border-bottom: 1px solid rgba(255,255,255,.1);
+				
 				span {
 					margin-right: 9px;
 				}
@@ -173,9 +172,8 @@ a:hover {
 
 .fade-out {
 	position: relative;
-	//animation: fadeOut ease 1s;
+	animation: fadeOut ease 1s;
 	animation: animation-slide-out-right ease 1s;
-
 }
 
 @keyframes fadeOut {
@@ -202,7 +200,7 @@ a:hover {
 }
 
 
-$primaryColor:#ED2228;
+$primaryColor:#0d6efd;
 
 .active-nav-item {
 	color: $primaryColor !important;
@@ -212,8 +210,6 @@ $primaryColor:#ED2228;
 .nav-pills .show>.nav-link {
 	color: white !important;
 	background-color: $primaryColor !important;
-	//  background-color: transparent!important;
-	//  color : $primaryColor !important;
 }
 
 .navbar-light .navbar-nav .nav-link:active,
@@ -230,20 +226,12 @@ $primaryColor:#ED2228;
 	left: auto !important;
 }
 
-.MuiPopover-paper {
-	padding: 15px;
-}
-
-.tss-5r15im-MUIDataTableToolbar-filterCloseIcon {
-	right: -5px !important;
-}
-
 .MuiToolbar-root>p {
 	margin: 0;
 }
 
 .css-1ygcj2i-MuiTableCell-root {
-	padding: 0 0 !important;
+	padding: 0 4px !important;
 }
 
 .tss-gm6zfk-MUIDataTableHeadCell-fixedHeader {
@@ -272,4 +260,8 @@ $primaryColor:#ED2228;
 
 .css-1o5h7o1-MuiFormLabel-root-MuiInputLabel-root {
 	top: -7px !important;
+}
+
+.css-1ex1afd-MuiTableCell-root {
+    padding: 6px 12px !important;
 }

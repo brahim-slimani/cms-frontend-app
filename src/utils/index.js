@@ -79,6 +79,7 @@ class Utils {
         OPERATION_SUCCESS: "Operation done successfully",
         NO_CHANGES_ISSUED: "No changes has been issued!",
         DELETE_CONTACT_CONRIMATION: "Are you sure you want to delete this contact ?",
+        DELETE_COMPANY_CONRIMATION: "Are you sure you want to delete this company ?",
         ALREADY_ASSIGNED: "This contact is already assigned to the selected company",
         NO_ITEM_SELECTED: "No item has been selected!"
     }
@@ -87,6 +88,14 @@ class Utils {
         { label: "FIRST NAME", name: "firstName" },
         { label: "LAST NAME", name: "lastName" },
         { label: "CONTACT TYPE", name: "contactType" },
+        { label: "CREATION DATE", name: "createdAt" },
+        { label: "LAST UPDATE DATE", name: "updatedAt" },
+        { label: "ACTIONS", name: "actions" }
+    ]
+
+    COMPANY_LIST_COLUMNS = [
+        { label: "COMPANY TVA NUMBER", name: "tvaNumber" },
+        { label: "ADDRESS", name: "address" },
         { label: "CREATION DATE", name: "createdAt" },
         { label: "LAST UPDATE DATE", name: "updatedAt" },
         { label: "ACTIONS", name: "actions" }

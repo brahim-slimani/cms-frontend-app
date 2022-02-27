@@ -7,7 +7,7 @@ export const IconBtn = (props) => {
     return (
         <Tooltip title={title}>
             <IconButton
-                sx={{ height: 30, width: 30, border: "1px solid", marginRight: "5px" }}
+                sx={{ height: 28, width: 28, border: "1px solid", marginRight: "5px" }}
                 size="small"
                 color={color}
                 onClick={onClick}
