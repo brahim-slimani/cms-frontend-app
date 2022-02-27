@@ -2,6 +2,7 @@ import { Loader } from "components/shared";
 import { Buffer } from "buffer";
 import jwtWorker from "utils/jwt-worker";
 import mobileViewPort from "assets/svg/mobile-viewport.svg";
+import { ROUTES_PATH } from "components/navigation/routes";
 
 class Utils {
 
@@ -102,6 +103,11 @@ class Utils {
                 {`${this.capitalizeStr(jwtWorker.getRolesFromToken()[0])} > ${this.capitalizeStr(window.location.pathname.split("/")[1])}`}
             </span>
         </div>)
+    }
+
+    redirectToLoginRoute = () => {
+        window.history.pushState({}, {}, `${process.env.PUBLIC_URL}${ROUTES_PATH.LOGIN}`);
+        window.location.reload();
     }
 
     CUSTOM_MESSAGES = {

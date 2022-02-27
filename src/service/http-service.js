@@ -24,7 +24,7 @@ defaultAxiosInstance.interceptors.response.use((response) => {
 }, error => {
     if (error.response.status === 401) {
         Promise.resolve(jwtWorker.removeTokenFromStorage()).finally(() => {
-            window.location.reload(false);
+            Utils.redirectToLoginRoute();
         });
     }
     return Promise.reject(error);

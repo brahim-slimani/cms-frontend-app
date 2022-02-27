@@ -293,10 +293,7 @@ a:hover {
 
 .tss-gm6zfk-MUIDataTableHeadCell-fixedHeader {
 	background-color: #007eff17 !important;
-}
-
-.css-1w1rijm-MuiButtonBase-root-MuiButton-root {
-	font-weight: bold !important;
+	padding: 0px 4px !important;
 }
 
 .css-1ex1afd-MuiTableCell-root {
@@ -313,14 +310,19 @@ a:hover {
 
 .tss-1fbujeu-MUIDataTableHeadCell-toolButton {
 	padding-left: 16px !important;
+	font-weight: bold !important;
 }
 
-.css-1o5h7o1-MuiFormLabel-root-MuiInputLabel-root {
+.custom-dropdown label {
 	top: -7px !important;
 }
 
 .css-1ex1afd-MuiTableCell-root {
 	padding: 6px 12px !important;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    padding: 6px 12px !important;
 }
 
 .grid-4x25 {
@@ -339,7 +341,7 @@ a:hover {
 }
 
 .icon-box-circle {
-	background: #e8f3ff; //$primary;
+	background: #e8f3ff; 
 	color: "black";
 	border-radius: 50px;
 	height: 40px;

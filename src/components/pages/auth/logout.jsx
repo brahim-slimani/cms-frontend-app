@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import UsersService from "service/user-service";
 import jwtWorker from 'utils/jwt-worker';
 import utils from "utils";
@@ -13,9 +13,9 @@ export const Logout = (props) => {
      */
     const logout = () => {
         setLoading(true);
-        UsersService.logout().then(() => {
+        UsersService.logout(jwtWorker.getTokenFromStorage()).then(() => {
             Promise.resolve(jwtWorker.removeTokenFromStorage()).finally(() => {
-                window.location.reload(false);
+                utils.redirectToLoginRoute();
             });
         });
     }
