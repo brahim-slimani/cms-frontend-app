@@ -19,7 +19,7 @@ export const CompanyDetail = (props) => {
             </Alert>
             <div className='my-2'>
                 <AlertTitle>Contacts</AlertTitle>
-                {company.contacts.length ? <div style={{ display: "grid", gridTemplateColumns: "max-content max-content max-content" }}>
+                {company.contacts.length ? <div className="grid-3x100">
                     {company.contacts.map(item => <Chip icon={<i className='bi bi-person-fill' />} className="me-2 mb-2" label={`${item.firstName} ${item.lastName}`} />)}
                 </div> : utils.NoItemsTemplate("No contacts has been assigned yet!")}
             </div>

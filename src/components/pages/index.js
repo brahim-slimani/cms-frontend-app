@@ -1,4 +1,5 @@
 export * from "./master-page"
+export * from "./dashboard"
 export * from "./auth/login-page"
 export * from "./auth/logout"
 

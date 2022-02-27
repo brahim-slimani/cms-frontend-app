@@ -21,7 +21,7 @@ body {
 	height: calc(100% - 73px);
 }
 
-@media (max-width:700px) {
+@media (max-width:800px) {
 	.h-custom {
 		height: 100%;
 	}
@@ -29,6 +29,18 @@ body {
 	.footer {
 		display: none !important;
 	}
+
+	.root-content {
+        display: none !important;
+    }
+
+    .mobile-viewport-content {
+        display: block !important;
+    }
+}
+
+.mobile-viewport-content {
+    display: none;
 }
 
 divider:after,
@@ -211,10 +223,6 @@ a:hover {
 	background: rgba(0, 0, 0, 0.322);
 }
 
-.task-item {
-	cursor: pointer !important;
-}
-
 .fade-out {
 	position: relative;
 	animation: fadeOut ease 1s;
@@ -246,6 +254,18 @@ a:hover {
 
 .active-nav-item {
 	color: $primary !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(177, 177, 177)
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(129, 129, 129, 0.781)
 }
 
 .nav-pills .nav-link.active,
@@ -301,4 +321,32 @@ a:hover {
 
 .css-1ex1afd-MuiTableCell-root {
 	padding: 6px 12px !important;
+}
+
+.grid-4x25 {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+}
+
+.grid-2x100 {
+	display: grid;
+	grid-template-columns: max-content max-content max-content;
+}
+
+.grid-3x100 {
+	display: grid;
+	grid-template-columns: max-content max-content max-content;
+}
+
+.icon-box-circle {
+	background: #e8f3ff; //$primary;
+	color: "black";
+	border-radius: 50px;
+	height: 40px;
+	width: 40px;
+	text-align: center;
+}
+
+.dashboard-item {
+	border-left: 2px solid $primary !important;
 }

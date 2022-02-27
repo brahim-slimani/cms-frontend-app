@@ -1,6 +1,7 @@
 import { Loader } from "components/shared";
 import { Buffer } from "buffer";
 import jwtWorker from "utils/jwt-worker";
+import mobileViewPort from "assets/image/mobile-viewport.svg";
 
 class Utils {
 
@@ -67,6 +68,15 @@ class Utils {
         return <><i className={icon} />&nbsp;{label}</>
     }
 
+    /**
+     * capitalize first letter of given string
+     * @param {string} str string to be capitalized
+     * @returns capitalized string
+     */
+    capitalizeStr = (str) => {
+        return `${str.charAt(0).toLocaleUpperCase()}${str.slice(1).toLocaleLowerCase()}`
+    }
+
     NoItemsTemplate = (label) => {
         return (
             <div className="text-center m-3">
@@ -76,10 +86,20 @@ class Utils {
         )
     }
 
+    NoMobileViewPortTemplate = () => {
+        return <div className="mobile-viewport-content m-5 text-center">
+            <img src={mobileViewPort} className="img-fluid mx-auto" alt="img" />
+            <h6 className="mt-5">
+                <i className="bi bi-exclamation-circle" style={{ fontSize: "35px" }} /> <br />
+                Sorry, the viewport mobile version is not currently available
+            </h6>
+        </div>
+    }
+
     BreadCrumbsTemplate = () => {
         return (<div class="w-100 text-end pt-2">
             <span className='me-4 '>
-                {`${jwtWorker.getSubFromToken()} > ${window.location.pathname.split("/")[1]}`}
+                {`${this.capitalizeStr(jwtWorker.getRolesFromToken()[0])} > ${this.capitalizeStr(window.location.pathname.split("/")[1])}`}
             </span>
         </div>)
     }

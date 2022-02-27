@@ -9,16 +9,23 @@ export const Sidebar = () => {
     const items = [
         {
             key: 0,
+            route: ROUTES_PATH.HOME,
+            icon: "bi bi-speedometer2",
+            label: "Dashboard"
+        },
+        {
+            key: 1,
             route: ROUTES_PATH.CONTACT,
             icon: "bi bi-people-fill",
             label: "Contact"
         },
         {
-            key: 1,
+            key: 2,
             route: ROUTES_PATH.COMPANY,
             icon: "bi bi-building",
             label: "Company"
-        }
+        },
+
     ]
 
     return (
