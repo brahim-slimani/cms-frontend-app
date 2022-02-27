@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/cms-frontend-app/static/css/main.76cd8c42.css",
+    "main.js": "/cms-frontend-app/static/js/main.06ba9b8f.js",
+    "static/media/bootstrap-icons.woff?": "/cms-frontend-app/static/media/bootstrap-icons.c1d7432ee75fa194e499.woff",
+    "static/media/bootstrap-icons.woff2?": "/cms-frontend-app/static/media/bootstrap-icons.a13b815539b49de48d23.woff2",
+    "static/media/logo.svg": "/cms-frontend-app/static/media/logo.d55dd66530b9e57a0d85329bb6ede070.svg",
+    "static/media/flat_preview_remote.svg": "/cms-frontend-app/static/media/flat_preview_remote.b95e294a2e695479bffd9132707f5688.svg",
+    "static/media/mobile-viewport.svg": "/cms-frontend-app/static/media/mobile-viewport.2ebc1fe01466d811a7bf77bac6006a2e.svg",
+    "static/media/logo-light.svg": "/cms-frontend-app/static/media/logo-light.bf389adf558cd14b7413edf1db12d23f.svg",
+    "index.html": "/cms-frontend-app/index.html",
+    "main.76cd8c42.css.map": "/cms-frontend-app/static/css/main.76cd8c42.css.map",
+    "main.06ba9b8f.js.map": "/cms-frontend-app/static/js/main.06ba9b8f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.76cd8c42.css",
+    "static/js/main.06ba9b8f.js"
+  ]
+}
