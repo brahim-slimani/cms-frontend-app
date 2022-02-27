@@ -6,7 +6,7 @@ import { PrivateRoute } from 'components/navigation/private-route';
 
 export const Routes = () => {
     return (
-        <Router history={useHistory}>
+        <Router basename={process.env.PUBLIC_URL} history={useHistory}>
             <Switch>
                 <Route exact path={ROUTES_PATH.LOGIN} component={LoginPage}>
                     {jwtWorker.isAuthenticated() && <Redirect to={ROUTES_PATH.HOME} />}

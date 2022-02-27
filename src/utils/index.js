@@ -100,13 +100,13 @@ class Utils {
     BreadCrumbsTemplate = () => {
         return (<div class="w-100 text-end pt-2">
             <span className='me-4 '>
-                {`${this.capitalizeStr(jwtWorker.getRolesFromToken()[0])} > ${this.capitalizeStr(window.location.pathname.split("/")[1])}`}
+                {`${this.capitalizeStr(jwtWorker.getRolesFromToken()[0])} > ${this.capitalizeStr(window.location.pathname.split("/")[2])}`}
             </span>
         </div>)
     }
 
     redirectToLoginRoute = () => {
-        window.history.pushState({}, {}, `${process.env.PUBLIC_URL}${ROUTES_PATH.LOGIN}`);
+        window.history.pushState({}, {}, `${process.env.PUBLIC_URL}`);
         window.location.reload();
     }
 
