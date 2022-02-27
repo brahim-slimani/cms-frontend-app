@@ -1,7 +1,7 @@
 $primary:#0d61c9;
 $bg-color: #eef1f5;
 $white-color: #ffff;
-$bg-sider-color: #222d32; //#1e90ff;
+$bg-sider-color: #222d32;
 
 body {
 	overflow-y: hidden;
@@ -147,7 +147,7 @@ a:hover {
 	text-decoration: none !important;
 }
 
-/************ BURGER BTN **********/
+/************ BURGER BUTTON **********/
 .ham {
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
@@ -188,12 +188,6 @@ a:hover {
 
 .ham.active .bottom {
 	stroke-dashoffset: -138px;
-}
-
-
-
-.footer {
-	padding: 0 30px;
 }
 
 #content {
@@ -250,22 +244,19 @@ a:hover {
 	}
 }
 
-
-$primaryColor:#0d6efd;
-
 .active-nav-item {
-	color: $primaryColor !important;
+	color: $primary !important;
 }
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
 	color: $white-color !important;
-	background-color: $primaryColor !important;
+	background-color: $primary !important;
 }
 
 .navbar-light .navbar-nav .nav-link:active,
 .navbar-light .navbar-nav .nav-link:active {
-	color: $primaryColor !important;
+	color: $primary !important;
 }
 
 .p-menu {

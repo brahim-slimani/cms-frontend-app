@@ -2,6 +2,9 @@ import axios from 'axios';
 import Utils from "utils";
 import jwtWorker from 'utils/jwt-worker';
 
+/**
+ * Intercept all http requests that will be made using the default instance
+ */
 const defaultAxiosInstance = axios.create();
 defaultAxiosInstance.interceptors.request.use(
     async (config) => {
@@ -12,6 +15,20 @@ defaultAxiosInstance.interceptors.request.use(
     },
     error => Promise.reject(error)
 );
+/**
+ * Intercept all http responses to check the http status, 
+ * if the code is 401 remove the token from web storage and redirect user to the login page
+ */
+defaultAxiosInstance.interceptors.response.use((response) => {
+    return response;
+}, error => {
+    if (error.response.status === 401) {
+        Promise.resolve(jwtWorker.removeTokenFromStorage()).finally(() => {
+            window.location.reload(false);
+        });
+    }
+    return Promise.reject(error);
+})
 
 export class HttpService {
 

@@ -41,14 +41,14 @@ export const CreateCompany = (props) => {
             <form onSubmit={formik.handleSubmit}>
                 <Input
                     id="tvaNumber"
-                    label="Tva number"
+                    label="Tva number *"
                     value={formik.values.tvaNumber}
                     onChange={(e) => { formik.handleChange(e) }}
                     error={formik.touched.tvaNumber && formik.errors.tvaNumber}
                     helperText={formik.touched.tvaNumber && formik.errors.tvaNumber} />
                 <Input
                     id="address"
-                    label="Address"
+                    label="Address *"
                     //rows={2}
                     value={formik.values.address}
                     onChange={(e) => { formik.handleChange(e) }}

@@ -48,7 +48,7 @@ export const CreateContact = (props) => {
             <form onSubmit={formik.handleSubmit}>
                 <Input
                     id="firstName"
-                    label="First name"
+                    label="First name *"
                     value={formik.values.firstName}
                     onChange={(e) => { formik.handleChange(e) }}
                     error={formik.touched.firstName && formik.errors.firstName}
@@ -56,7 +56,7 @@ export const CreateContact = (props) => {
 
                 <Input
                     id="lastName"
-                    label="Last name"
+                    label="Last name *"
                     value={formik.values.lastName}
                     onChange={(e) => { formik.handleChange(e) }}
                     error={formik.touched.lastName && formik.errors.lastName}
@@ -64,7 +64,7 @@ export const CreateContact = (props) => {
 
                 <Input
                     id="address"
-                    label="Address"
+                    label="Address *"
                     //rows={2}
                     value={formik.values.address}
                     onChange={(e) => { formik.handleChange(e) }}
@@ -73,7 +73,7 @@ export const CreateContact = (props) => {
 
                 <Dropdown
                     id="contactType"
-                    label="Contact Type"
+                    label="Contact Type *"
                     items={Object.entries(utils.CONTACT_TYPES).map(([key, value]) => { return { name: key, value: value } })}
                     value={formik.values.contactType}
                     onChange={(e) => { formik.setValues({ ...formik.values, contactType: e.target.value }); setContactType(e.target.value) }}
