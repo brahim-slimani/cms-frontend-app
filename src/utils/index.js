@@ -1,5 +1,6 @@
 import { Loader } from "components/shared";
 import { Buffer } from "buffer";
+import jwtWorker from "utils/jwt-worker";
 
 class Utils {
 
@@ -74,6 +75,14 @@ class Utils {
         )
     }
 
+    BreadCrumbsTemplate = () => {
+        return (<div class="w-100 text-end pt-2">
+            <span className='me-4 '>
+                {`${jwtWorker.getSubFromToken()} > ${window.location.pathname.split("/")[1]}`}
+            </span>
+        </div>)
+    }
+
     CUSTOM_MESSAGES = {
         REQUIRED_FIELD: "This field is required!",
         OPERATION_SUCCESS: "Operation done successfully",
@@ -89,7 +98,7 @@ class Utils {
         { label: "LAST NAME", name: "lastName" },
         { label: "CONTACT TYPE", name: "contactType" },
         { label: "CREATION DATE", name: "createdAt" },
-        { label: "LAST UPDATE DATE", name: "updatedAt" },
+        { label: "LAST UPDATE", name: "updatedAt" },
         { label: "ACTIONS", name: "actions" }
     ]
 
@@ -97,7 +106,7 @@ class Utils {
         { label: "COMPANY TVA NUMBER", name: "tvaNumber" },
         { label: "ADDRESS", name: "address" },
         { label: "CREATION DATE", name: "createdAt" },
-        { label: "LAST UPDATE DATE", name: "updatedAt" },
+        { label: "LAST UPDATE", name: "updatedAt" },
         { label: "ACTIONS", name: "actions" }
     ]
 

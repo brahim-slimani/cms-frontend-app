@@ -1,5 +1,6 @@
 import React from 'react';
 import { RootContainer, Sidebar, Header } from 'components/layout';
+import utils from 'utils';
 
 export const MasterPage = (props) => {
     const { children } = props;
@@ -8,7 +9,10 @@ export const MasterPage = (props) => {
             <Sidebar />
             <div className="w-100" style={{ height: "90vh" }}>
                 <Header />
-                {children}
+                <div className='scroll-container position-relative' style={{ height: "inherit" }}>
+                    {utils.BreadCrumbsTemplate()}
+                    {children}
+                </div>
             </div>
         </RootContainer>
     );

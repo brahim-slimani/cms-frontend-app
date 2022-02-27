@@ -33,7 +33,7 @@ class JwtWorker {
      * @returns array of user authorities 
      */
     getRolesFromToken = () => {
-        return this.decodeJWT()?.roles;
+        return this.decodeJWT()?.authorities;
     }
 
     /**

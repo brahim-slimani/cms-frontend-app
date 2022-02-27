@@ -1,3 +1,22 @@
+$primary:#0d61c9;
+$bg-color: #eef1f5;
+$white-color: #ffff;
+$bg-sider-color: #222d32; //#1e90ff;
+
+body {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+.scroll-container {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.root-content {
+	background-color: $bg-color;
+}
+
 .h-custom {
 	height: calc(100% - 73px);
 }
@@ -20,15 +39,6 @@ divider:after,
 	background: #eee;
 }
 
-body {
-	overflow-y: hidden;
-	overflow-x: hidden;
-}
-
-.scroll-container {
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
 
 .footer {
 	position: fixed;
@@ -43,12 +53,11 @@ $grid-breakpoints: (xs: 0,
 	lg: 992px,
 	xl: 1200px) !default;
 
-$primary:#0d61c9;
 
 #sidebar {
-	min-width: 230px;
-	background: $primary;
-	color: #fff;
+	min-width: 210px;
+	background: $bg-sider-color;
+	color: $white-color;
 	transition: all 0.3s;
 	min-height: 100vh;
 
@@ -109,7 +118,7 @@ $primary:#0d61c9;
 				padding: 9px 10px;
 				display: block;
 				color: rgba(255, 255, 255, 1);
-				
+
 				span {
 					margin-right: 9px;
 				}
@@ -122,7 +131,7 @@ $primary:#0d61c9;
 			&.active {
 				>a {
 					background: #ed1c24;
-					color: white;
+					color: $white-color;
 				}
 			}
 		}
@@ -130,8 +139,55 @@ $primary:#0d61c9;
 
 }
 
+.sidebar-header {
+	background: $primary;
+}
+
 a:hover {
 	text-decoration: none !important;
+}
+
+/************ BURGER BTN **********/
+.ham {
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: transform 400ms;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.hamRotate.active {
+	transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+	transform: rotate(180deg);
+}
+
+.line {
+	fill: none;
+	transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+	stroke: $white-color;
+	stroke-width: 5.5;
+	stroke-linecap: round;
+}
+
+.ham .top {
+	stroke-dasharray: 40 139;
+}
+
+.ham .bottom {
+	stroke-dasharray: 40 180;
+}
+
+.ham.active .top {
+	stroke-dashoffset: -98px;
+}
+
+.ham.active .bottom {
+	stroke-dashoffset: -138px;
 }
 
 
@@ -149,11 +205,6 @@ a:hover {
 
 
 /******* content ******/
-.parent-item {
-	color: dodgerblue;
-	font-size: 14px;
-}
-
 .child-item {
 	cursor: pointer;
 }
@@ -208,18 +259,13 @@ $primaryColor:#0d6efd;
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
-	color: white !important;
+	color: $white-color !important;
 	background-color: $primaryColor !important;
 }
 
 .navbar-light .navbar-nav .nav-link:active,
 .navbar-light .navbar-nav .nav-link:active {
 	color: $primaryColor !important;
-}
-
-.splitButton {
-	background-color: rgba(178, 255, 214, 0) !important;
-	color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .p-menu {
@@ -263,5 +309,5 @@ $primaryColor:#0d6efd;
 }
 
 .css-1ex1afd-MuiTableCell-root {
-    padding: 6px 12px !important;
+	padding: 6px 12px !important;
 }

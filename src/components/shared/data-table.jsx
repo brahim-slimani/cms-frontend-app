@@ -25,7 +25,7 @@ export const DataTable = (props) => {
     }
 
     return (
-        <div className='card shadow-sm m-4'>
+        <div className='card shadow-sm m-3'>
             <MuiDataTable
                 title={header}
                 columns={columns}

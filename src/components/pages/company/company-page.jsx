@@ -5,11 +5,7 @@ import { WrappedCompanyList } from 'components/pages/company/company-list';
 
 export const CompanyPage = () => {
     const [refresh, setRefresh] = React.useState();
-    return (
-        <div className='scroll-container position-relative' style={{ height: "inherit" }}>
-            <CompanyListHoc shouldRefresh={(val) => setRefresh(val)} refresh={refresh} />
-        </div>
-    );
+    return <CompanyListHoc shouldRefresh={(val) => setRefresh(val)} refresh={refresh} />
 }
 
 const CompanyListHoc = (props) => {

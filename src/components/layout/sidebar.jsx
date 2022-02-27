@@ -1,7 +1,9 @@
 import React from 'react';
-import logoLight from "assets/image/logo-light.svg";
+import logoLight from "assets/image/logo.svg";
 import { ROUTES_PATH } from "components/navigation/routes";
 import { SiderItem } from 'components/layout';
+import { Avatar } from '@mui/material';
+import jwtWorker from 'utils/jwt-worker';
 
 export const Sidebar = () => {
     const items = [
@@ -18,17 +20,26 @@ export const Sidebar = () => {
             label: "Company"
         }
     ]
+
     return (
         <nav id="sidebar" className="active$">
             {/* HEADER */}
-            <div className="mx-2 my-3">
+            <div className="px-2 pt-2 sidebar-header">
                 <a href="index">
-                    <img src={logoLight} height="40" alt="img" className='mb-2' />
+                    <img id="sider-logo" src={logoLight} height="33" alt="img" className='mb-2' />
                 </a>
-                <br />
-                <small className='text-center m-3'>Contact Management System</small>
+            </div>
+            <div className='my-2 px-3 d-flex' >
+                <Avatar id="profile-avatar" icon={<i className='bi bi-person-fill' />} className="my-auto" />
+                <div id="profile-detail" className='ms-2'>
+                    <span>{`${jwtWorker.getRolesFromToken()[0].authority} ${jwtWorker.getSubFromToken()}`}</span><br />
+                    <small>My Profile</small>
+                </div>
             </div>
             {/* SIDER CONTENT */}
+            <div id="sider-head" className='text-center my-3'>
+                <small>Contact Management System</small>
+            </div>
             <ul class="list-unstyled components mb-5 ">
                 {items.map(item => <SiderItem {...item} />)}
             </ul>

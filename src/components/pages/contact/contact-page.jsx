@@ -5,11 +5,7 @@ import { WrappedContactList } from 'components/pages/contact/contact-list';
 
 export const ContactPage = () => {
     const [refresh, setRefresh] = React.useState();
-    return (
-        <div className='scroll-container position-relative' style={{ height: "inherit" }}>
-            <ContactListHoc shouldRefresh={(val) => setRefresh(val)} refresh={refresh} />
-        </div>
-    );
+    return <ContactListHoc shouldRefresh={(val) => setRefresh(val)} refresh={refresh} />
 }
 
 const ContactListHoc = (props) => {
