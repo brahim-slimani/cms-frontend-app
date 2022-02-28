@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes } from "components/navigation/routes";
+import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import utils from "utils";
+
+import 'assets/scss/style.scss';
+import "bootstrap-icons/font/bootstrap-icons.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
 
 function App() {
+
+  const theme = createTheme(utils.CUSTOM_MUI_THEME);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
     </div>
   );
 }
