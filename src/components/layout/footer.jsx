@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Footer = () => {
     return (
-        <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-2 px-4 px-xl-5 bg-primary footer">
+        <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-2 px-4 px-xl-5 bg-primary custom-footer">
             <div className="text-white mb-3 mb-md-0">
                 Copyright © {new Date().getFullYear()}. All rights reserved.
             </div>

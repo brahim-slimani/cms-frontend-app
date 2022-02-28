@@ -10,6 +10,7 @@ jobs:
       - checkout
       - run: npm cache clean --force
       - run: npm install
+      - run: npm i @mui/icons-material
       - run: CI=false npm run build
       - run:
           name: git conf

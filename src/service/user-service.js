@@ -23,8 +23,10 @@ class UserService {
         return this.httpService.call({ url: "/auth/login", method: "POST", data: credentials });
     }
 
+   
     /**
      * Logout service
+     * @param {string} token token to be invalidated
      * @returns {Promise<AxiosResponse>} http response
      */
     logout = (token) => {

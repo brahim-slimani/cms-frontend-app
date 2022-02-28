@@ -26,8 +26,9 @@ body {
 		height: 100%;
 	}
 
-	.footer {
+	.custom-footer {
 		display: none !important;
+		position: initial !important;
 	}
 
 	.root-content {
@@ -39,6 +40,11 @@ body {
     }
 }
 
+.custom-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
 .mobile-viewport-content {
     display: none;
 }
@@ -49,13 +55,6 @@ divider:after,
 	flex: 1;
 	height: 1px;
 	background: #eee;
-}
-
-
-.footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
 }
 
 
