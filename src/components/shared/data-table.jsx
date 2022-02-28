@@ -52,17 +52,20 @@ export const TableActionsTemplate = (props) => {
                     title="Assign"
                     icon="bi bi-gear-wide-connected"
                     color="primary"
-                    onClick={props.assignCallback} />
+                    onClick={props.assignCallback}
+                />
                 <IconBtn
                     title="Edit"
                     icon="bi bi-pencil-fill"
                     color="secondary"
-                    onClick={props.editCallback} />
+                    onClick={props.editCallback}
+                />
                 <IconBtn
                     title="Delete"
                     icon="bi bi-trash"
                     color="error"
-                    onClick={props.deleteCallback} />
+                    onClick={props.deleteCallback}
+                />
             </>
         }
     </div>

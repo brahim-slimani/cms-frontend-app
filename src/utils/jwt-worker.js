@@ -14,7 +14,7 @@ class JwtWorker {
     }
 
     /**
-     * decode the encoded token from base64 into clear mode
+     * Decode the encoded token from base64 into clear mode
      * @returns claims data injected in bearer token
      */
     decodeJWT = () => {
@@ -29,7 +29,7 @@ class JwtWorker {
     }
 
     /**
-     * retrieve the user roles from token
+     * Retrieve the user roles from token
      * @returns array of user authorities 
      */
     getRolesFromToken = () => {
@@ -37,7 +37,7 @@ class JwtWorker {
     }
 
     /**
-     * retrieve the username from token claims
+     * Retrieve the username from token claims
      * @returns username
      */
     getSubFromToken = () => {
@@ -74,7 +74,7 @@ class JwtWorker {
     }
 
     /**
-     * delete token from web storage
+     * Delete token from web storage
      */
     removeTokenFromStorage = () => {
         utils.deleteItemFromStorage(this.TOKEN_KEY);

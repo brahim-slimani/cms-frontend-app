@@ -1,8 +1,10 @@
-export * from "./master-page"
-export * from "./dashboard"
+/*****************  Auth components     ******************/
 export * from "./auth/login-page"
 export * from "./auth/logout"
-
+/*****************  Master components   ******************/
+export * from "./master/master-page"
+export * from "./master/dashboard"
+/*****************  Contact components  ******************/
 export * from "./contact/contact-page"
 export * from "./contact/create-contact"
 export * from "./contact/edit-contact"
@@ -10,7 +12,7 @@ export * from "./contact/contact-list"
 export * from "./contact/delete-contact"
 export * from "./contact/contact-assignement"
 export * from "./contact/contact-detail"
-
+/*****************  Company components  ******************/
 export * from "./company/company-page"
 export * from "./company/create-company"
 export * from "./company/edit-company"

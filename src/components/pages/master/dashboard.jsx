@@ -24,7 +24,7 @@ export const Dashboard = () => {
                 setCompanies({ all: response.data.length });
             }).finally(() => setLoading(false));
         });
-    }, [])
+    }, []);
 
     return (
         <>
@@ -39,10 +39,10 @@ export const Dashboard = () => {
                         )
                     }</div> :
                     <div className="mx-3 grid-4x25" >
-                        <DashbordCard title="Total companies" icon="bi bi-building" count={companies.all} className="me-3" />
-                        <DashbordCard title="Total contacts" icon="bi bi-person" count={contacts.all} className="me-3" />
-                        <DashbordCard title="Total Employees" icon="bi bi-person-check" count={contacts.employees} className="me-3" />
-                        <DashbordCard title="Total Freelancers" icon="bi bi-person-workspace" count={contacts.freelancers} />
+                        <DashbordBoxItem title="Total companies" icon="bi bi-building" count={companies.all} className="me-3" />
+                        <DashbordBoxItem title="Total contacts" icon="bi bi-person" count={contacts.all} className="me-3" />
+                        <DashbordBoxItem title="Total Employees" icon="bi bi-person-check" count={contacts.employees} className="me-3" />
+                        <DashbordBoxItem title="Total Freelancers" icon="bi bi-person-workspace" count={contacts.freelancers} />
                     </div>
             }
         </>
@@ -50,7 +50,7 @@ export const Dashboard = () => {
 }
 
 
-const DashbordCard = (props) => {
+const DashbordBoxItem = (props) => {
     const { className, title, count, icon } = props;
     return <div className={`card shadow-sm mt-1 dashboard-item ${className}`}>
         <div className="card-body p-3 d-flex justify-content-between mx-2">

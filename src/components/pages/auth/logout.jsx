@@ -9,7 +9,7 @@ export const Logout = (props) => {
     const [loading, setLoading] = useState();
 
     /**
-     * logout submission
+     * Logout submission
      */
     const logout = () => {
         setLoading(true);
@@ -26,12 +26,14 @@ export const Logout = (props) => {
                 type="submit"
                 label={utils.labelTemplate(utils.labelIcon("bi bi-check-circle", "confirm"), loading, "Logging out...")}
                 onClick={logout}
-                className="my-2" />
+                className="my-2"
+            />
             <CustomButton
                 label={utils.labelIcon("bi bi-x-circle", "Cancel")}
                 onClick={() => props.cancelCallback()}
                 variant="outlined"
-                color="error" />
+                color="error"
+            />
         </div >
     );
 }

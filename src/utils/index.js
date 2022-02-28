@@ -2,12 +2,11 @@ import { Loader } from "components/shared";
 import { Buffer } from "buffer";
 import jwtWorker from "utils/jwt-worker";
 import mobileViewPort from "assets/svg/mobile-viewport.svg";
-import { ROUTES_PATH } from "components/navigation/routes";
 
 class Utils {
 
     /**
-     * this method is used to handle the error response within http request
+     * This method is used to handle the error response within http request
      * @param {Axios<Error>} error Axios error response
      * @return {string} error message
      */
@@ -18,7 +17,7 @@ class Utils {
     }
 
     /**
-    * custom template with loading state for submit actions
+    * Custom template with loading state for submit actions
     * @param {any} template element to be rendered
     * @param {boolean} loading state of progress
     * @param {string} message loading message
@@ -30,7 +29,7 @@ class Utils {
 
 
     /**
-     * persist an item in web storage
+     * Persist an item in web storage
      * @param {string} key item key
      * @param {any} value item value 
      */
@@ -40,7 +39,7 @@ class Utils {
     }
 
     /**
-     * delete an item from web storage
+     * Delete an item from web storage
      * @param {string} key item key to be deleted
      */
     deleteItemFromStorage = (key) => {
@@ -48,7 +47,7 @@ class Utils {
     }
 
     /**
-     * get an item value from web storage
+     * Get an item value from web storage
      * @param {string} key item key to be retrieved
      * @returns item value
      */
@@ -57,7 +56,7 @@ class Utils {
     }
 
     /**
-     * decode given base64 string
+     * Decode given base64 string
      * @param {string} str wrap to be decoded
      * @returns {string} decoded result
      */
@@ -70,7 +69,7 @@ class Utils {
     }
 
     /**
-     * capitalize first letter of given string
+     * Capitalize first letter of given string
      * @param {string} str string to be capitalized
      * @returns capitalized string
      */
@@ -105,9 +104,32 @@ class Utils {
         </div>)
     }
 
+    WrappedLoader = ({ sm }) => {
+        return sm ? <div className="my-3" style={{ marginLeft: "45%" }}>
+            <Loader size={30} /> </div> :
+            <div style={{ position: "absolute", top: "50%", left: "45%" }}>
+                <Loader />
+            </div>;
+    }
+
     redirectToLoginRoute = () => {
         window.history.pushState({}, {}, `${process.env.PUBLIC_URL}`);
         window.location.reload();
+    }
+
+    CUSTOM_MUI_THEME = {
+        palette: {
+            primary: {
+                main: '#0d6efd',
+                dark: '#0850b9',
+                contrastText: '#fff'
+            }
+        },
+        typography: {
+            button: {
+                textTransform: "capitalize"
+            }
+        }
     }
 
     CUSTOM_MESSAGES = {
@@ -120,23 +142,6 @@ class Utils {
         NO_ITEM_SELECTED: "No item has been selected!",
         LOGOUT_CONFIRMATION: "Are you sure you want to log out ?"
     }
-
-    CONTACT_LIST_COLUMNS = [
-        { label: "FIRST NAME", name: "firstName" },
-        { label: "LAST NAME", name: "lastName" },
-        { label: "CONTACT TYPE", name: "contactType" },
-        { label: "CREATION DATE", name: "createdAt" },
-        { label: "LAST UPDATE", name: "updatedAt" },
-        { label: "ACTIONS", name: "actions" }
-    ]
-
-    COMPANY_LIST_COLUMNS = [
-        { label: "COMPANY TVA NUMBER", name: "tvaNumber" },
-        { label: "ADDRESS", name: "address" },
-        { label: "CREATION DATE", name: "createdAt" },
-        { label: "LAST UPDATE", name: "updatedAt" },
-        { label: "ACTIONS", name: "actions" }
-    ]
 
     CONTACT_TYPES = {
         Freelancer: "FREELANCER",

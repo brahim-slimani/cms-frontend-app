@@ -37,9 +37,9 @@ export class HttpService {
 
     /**
      * Custom http call
-     * @param {*} object destruction of the passed object yield the below properties
-     * @property {string} url suffix of the url e.g. /api/companies 
-     * @property {string} method method of the request, e.g. get, post, put, delete
+     * @param {object} object: destruction of the passed object yield the below properties
+     * @property {string} url: suffix of the url e.g. /api/companies 
+     * @property {string} method: method of the request, e.g. get, post, put, delete
      * @property {Object} data: payload of the request
      * @property {string} params: parameters of the request
      * @return {Promise<AxiosResponse>} http response

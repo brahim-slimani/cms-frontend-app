@@ -1,7 +1,8 @@
 import React from 'react';
-import { WithLoadingComponent, Loader } from 'components/shared';
+import { WithLoadingComponent } from 'components/shared';
 import contactService from "service/contact-service";
 import { WrappedContactList } from 'components/pages/contact/contact-list';
+import utils from "utils";
 
 export const ContactPage = () => {
     const [refresh, setRefresh] = React.useState();
@@ -9,6 +10,6 @@ export const ContactPage = () => {
 }
 
 const ContactListHoc = (props) => {
-    const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedContactList, () => contactService.getContacts(), <div style={{ position: "absolute", top: "50%", left: "45%" }}><Loader /></div>)(props), [props.refresh]);
+    const WithLoadingHoc = React.useMemo(() => WithLoadingComponent(WrappedContactList, () => contactService.getContacts(), utils.WrappedLoader({ sm: false }))(props), [props.refresh]);
     return <WithLoadingHoc />
 }

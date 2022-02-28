@@ -1,11 +1,8 @@
 import { Alert, Snackbar } from '@mui/material';
 import React, { forwardRef, useImperativeHandle } from 'react';
 
-
 export const ToastNotification = forwardRef((props, ref) => {
-
     const [snackProperties, setSnackPrperties] = React.useState({ open: false, servirity: null, message: null });
-
     useImperativeHandle(ref,
         () => ({
             showToast({ type, message }) {
@@ -16,11 +13,9 @@ export const ToastNotification = forwardRef((props, ref) => {
             }
         })
     );
-
     const handleClose = () => {
         setSnackPrperties({ ...snackProperties, open: false });
     }
-
     return (
         <Snackbar
             open={snackProperties.open}

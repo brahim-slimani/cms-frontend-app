@@ -12,7 +12,7 @@ class CompanyService {
 
     /**
      * Add a new comapny
-     * @param {Object} payload company to be created 
+     * @param {Object} payload: company to be created 
      * @returns {Promise<AxiosResponse>} http response
      */
     addCompany = (payload) => {
@@ -21,7 +21,7 @@ class CompanyService {
 
     /**
     * Edit an existing company
-    * @param {Object} payload company to be updated 
+    * @param {Object} payload: company to be updated 
     * @returns {Promise<AxiosResponse>} http response
     */
     editCompany = (payload) => {
@@ -30,7 +30,7 @@ class CompanyService {
 
     /**
      * Delete given company
-     * @param {string} uuid company uuid to be deleted
+     * @param {string} uuid: company uuid to be deleted
      * @returns {Promise<AxiosResponse>} http response
      */
     deleteCompany = (uuid) => {

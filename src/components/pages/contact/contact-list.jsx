@@ -19,22 +19,22 @@ export const WrappedContactList = (props) => {
                     contact={item}
                     editCallback={() => {
                         popupRef.current.openPopup();
-                        setContactAction({ action: "edit", title: "Edit contact" });
+                        setContactAction({ action: CONTACT_ACTIONS.EDIT.key, title: CONTACT_ACTIONS.EDIT.title });
                         setTargetContact(item);
                     }}
                     deleteCallback={() => {
                         popupRef.current.openPopup();
-                        setContactAction({ action: "delete", title: "Delete contact" });
+                        setContactAction({ action: CONTACT_ACTIONS.DELETE.key, title: CONTACT_ACTIONS.DELETE.title });
                         setTargetContact(item);
                     }}
                     assignCallback={() => {
                         popupRef.current.openPopup();
-                        setContactAction({ action: "assign", title: "Contact assignement" });
+                        setContactAction({ action: CONTACT_ACTIONS.ASSIGN.key, title: CONTACT_ACTIONS.ASSIGN.title });
                         setTargetContact(item);
                     }}
                     previewCallback={() => {
                         popupRef.current.openPopup();
-                        setContactAction({ action: "preview", title: "Preview contact" });
+                        setContactAction({ action: CONTACT_ACTIONS.PREVIEW.key, title: CONTACT_ACTIONS.PREVIEW.key });
                         setTargetContact(item);
                     }}
                 />;
@@ -46,8 +46,8 @@ export const WrappedContactList = (props) => {
         return <div className='col-md-4'>
             <CustomButton onClick={(e) => {
                 popupRef.current.openPopup();
-                setContactAction({ action: "create", title: "Create contact" });
-            }} label={<><i className='bi bi-plus-circle' />&nbsp;Add contact</>} />
+                setContactAction({ action: CONTACT_ACTIONS.CREATE.key, title: CONTACT_ACTIONS.CREATE.title });
+            }} label={utils.labelIcon("bi bi-plus-circle", "Add contact")} />
         </div>
     }
 
@@ -61,33 +61,34 @@ export const WrappedContactList = (props) => {
 
     const popupChildren2beRendred = () => {
         switch (contactAction.action) {
-            case "create":
+            case CONTACT_ACTIONS.CREATE.key:
                 return <CreateContact
                     successCallback={successCallbackFn}
                     errorCallback={(message) => toastRef.current.showToast({ type: "error", message })}
                     cancelCallback={() => popupRef.current.closePopup()}
                 />
-            case "edit":
+            case CONTACT_ACTIONS.EDIT.key:
                 return <EditContact
                     contact={targetContact}
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
                     successCallback={successCallbackFn}
                     cancelCallback={() => popupRef.current.closePopup()}
                 />
-            case "delete":
+            case CONTACT_ACTIONS.DELETE.key:
                 return <DeleteContact
                     contact={targetContact}
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
                     successCallback={successCallbackFn}
-                    cancelCallback={() => popupRef.current.closePopup()} />
-            case "assign":
+                    cancelCallback={() => popupRef.current.closePopup()}
+                />
+            case CONTACT_ACTIONS.ASSIGN.key:
                 return <ContactAssignment
                     contact={targetContact}
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
                     successCallback={successCallbackFn}
                     cancelCallback={() => popupRef.current.closePopup()}
                 />
-            case "preview":
+            case CONTACT_ACTIONS.PREVIEW.key:
                 return <ContactDetail
                     contact={targetContact}
                     cancelCallback={() => popupRef.current.closePopup()}
@@ -98,11 +99,31 @@ export const WrappedContactList = (props) => {
 
     return (
         <>
-            <DataTable header={jwtWorker.hasRole(utils.ROLES.Admin) ? <CreateContactBtn /> : "Contact list"} columns={utils.CONTACT_LIST_COLUMNS} data={contacts} />
+            <DataTable
+                header={jwtWorker.hasRole(utils.ROLES.Admin) ? <CreateContactBtn /> : "Contact list"}
+                columns={CONTACT_LIST_COLUMNS}
+                data={contacts} />
             <Popup ref={popupRef} title={contactAction.title}>
                 {popupChildren2beRendred()}
             </Popup>
             <ToastNotification ref={toastRef} />
         </>
     );
+}
+
+const CONTACT_LIST_COLUMNS = [
+    { label: "FIRST NAME", name: "firstName" },
+    { label: "LAST NAME", name: "lastName" },
+    { label: "CONTACT TYPE", name: "contactType" },
+    { label: "CREATION DATE", name: "createdAt" },
+    { label: "LAST UPDATE", name: "updatedAt" },
+    { label: "ACTIONS", name: "actions" }
+]
+
+const CONTACT_ACTIONS = {
+    CREATE: { key: "create", title: "Create contact" },
+    EDIT: { key: "edit", title: "Edit contact" },
+    DELETE: { key: "delete", title: "Delete contact" },
+    ASSIGN: { key: "assign", title: "Contact assignement" },
+    PREVIEW: { key: "preview", title: "Preview contact" }
 }

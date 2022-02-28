@@ -15,8 +15,8 @@ class UserService {
 
     httpService = new HttpService(customAxiosInstance);
     /**
-     * login service
-     * @param {Object} credentials user credentials
+     * Login service
+     * @param {Object} credentials: user credentials
      * @returns {Promise<AxiosResponse>} http response
      */
     login = (credentials) => {
@@ -26,7 +26,7 @@ class UserService {
    
     /**
      * Logout service
-     * @param {string} token token to be invalidated
+     * @param {string} token: bearer token to be invalidated
      * @returns {Promise<AxiosResponse>} http response
      */
     logout = (token) => {

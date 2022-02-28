@@ -4,10 +4,8 @@ import { ToastNotification } from 'components/shared';
 export const WithLoadingComponent = (WrappedComponent, Promise, Loader) => (props) => {
 
     const LoadingComponent = () => {
-
         const [data, setData] = useState({ result: null, loading: false, error: null });
         const toastRef = useRef(null);
-
         useEffect(() => {
             setData({ ...data, loading: true });
             Promise().then((response) => {
@@ -22,7 +20,8 @@ export const WithLoadingComponent = (WrappedComponent, Promise, Loader) => (prop
             <>
                 {
                     data.loading ?
-                        Loader : data.result && <WrappedComponent {...props} data={data.result} />
+                        Loader :
+                        data.result && <WrappedComponent {...props} data={data.result} />
                 }
                 <ToastNotification ref={toastRef} />
             </>

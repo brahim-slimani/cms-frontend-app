@@ -12,7 +12,7 @@ class ContactService {
 
     /**
      * Add a new contact
-     * @param {Object} payload contact to be created 
+     * @param {Object} payload: contact to be created 
      * @returns {Promise<AxiosResponse>} http response
      */
     addContact = (payload) => {
@@ -21,7 +21,7 @@ class ContactService {
 
     /**
     * Edit an existing contact
-    * @param {Object} payload contact to be updated 
+    * @param {Object} payload: contact to be updated 
     * @returns {Promise<AxiosResponse>} http response
     */
     editContact = (payload) => {
@@ -30,7 +30,7 @@ class ContactService {
 
     /**
      * Delete given contact
-     * @param {string} uuid contact uuid to be deleted
+     * @param {string} uuid: contact uuid to be deleted
      * @returns {Promise<AxiosResponse>} http response
      */
     deleteContact = (uuid) => {
@@ -39,8 +39,8 @@ class ContactService {
 
     /**
      * Assign contact into specific company
-     * @param {string} contact uuid of contact to be assigned
-     * @param {*} company uuid of company
+     * @param {string} contact: uuid of contact to be assigned
+     * @param {string} company: uuid of company
      * @returns {Promise<AxiosResponse>} http response
      */
     assignContact2company = (contact, company) => {

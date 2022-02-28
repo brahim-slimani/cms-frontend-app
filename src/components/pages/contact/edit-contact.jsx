@@ -8,7 +8,6 @@ import contactService from "service/contact-service";
 export const EditContact = (props) => {
 
     const { companies, ...contact } = props.contact;
-
     const [contactType, setContactType] = React.useState(contact.contactType);
     const [loading, setLoading] = React.useState(false);
 
@@ -33,7 +32,7 @@ export const EditContact = (props) => {
     });
 
     /**
-     * contact form submission
+     * Handle edit form submission
      * @param {Object} payload contact data
      */
     const handleSubmit = (payload) => {
@@ -58,25 +57,24 @@ export const EditContact = (props) => {
                     value={formik.values.firstName}
                     onChange={(e) => { formik.handleChange(e) }}
                     error={formik.touched.firstName && formik.errors.firstName}
-                    helperText={formik.touched.firstName && formik.errors.firstName} />
-
+                    helperText={formik.touched.firstName && formik.errors.firstName}
+                />
                 <Input
                     id="lastName"
                     label="Last name"
                     value={formik.values.lastName}
                     onChange={(e) => { formik.handleChange(e) }}
                     error={formik.touched.lastName && formik.errors.lastName}
-                    helperText={formik.touched.lastName && formik.errors.lastName} />
-
+                    helperText={formik.touched.lastName && formik.errors.lastName}
+                />
                 <Input
                     id="address"
                     label="Address"
-                    //rows={2}
                     value={formik.values.address}
                     onChange={(e) => { formik.handleChange(e) }}
                     error={formik.touched.address && formik.errors.address}
-                    helperText={formik.touched.address && formik.errors.address} />
-
+                    helperText={formik.touched.address && formik.errors.address}
+                />
                 <Dropdown
                     id="contactType"
                     label="Contact Type"
@@ -92,18 +90,21 @@ export const EditContact = (props) => {
                         value={formik.values.tvaNumber}
                         onChange={(e) => { formik.handleChange(e) }}
                         error={formik.touched.tvaNumber && formik.errors.tvaNumber}
-                        helperText={formik.touched.tvaNumber && formik.errors.tvaNumber} />
+                        helperText={formik.touched.tvaNumber && formik.errors.tvaNumber}
+                    />
                 }
                 <div className='mt-3'>
                     <CustomButton
                         type="submit"
                         label={utils.labelTemplate(utils.labelIcon("bi bi-check-circle", "submit"), loading, "Processing...")}
-                        className="my-2" />
+                        className="my-2"
+                    />
                     <CustomButton
                         label={utils.labelIcon("bi bi-x-circle", "Cancel")}
                         onClick={props.cancelCallback}
                         variant="outlined"
-                        color="error" />
+                        color="error"
+                    />
                 </div>
             </form>
         </div>

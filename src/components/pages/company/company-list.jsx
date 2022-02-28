@@ -19,22 +19,22 @@ export const WrappedCompanyList = (props) => {
                     contact={item}
                     editCallback={() => {
                         popupRef.current.openPopup();
-                        setCompanyAction({ action: "edit", title: "Edit company" });
+                        setCompanyAction({ action: COMPANY_ACTIONS.EDIT.key, title: COMPANY_ACTIONS.EDIT.title });
                         setTargetCompany(item);
                     }}
                     deleteCallback={() => {
                         popupRef.current.openPopup();
-                        setCompanyAction({ action: "delete", title: "Delete company" });
+                        setCompanyAction({ action: COMPANY_ACTIONS.DELETE.key, title: COMPANY_ACTIONS.DELETE.title });
                         setTargetCompany(item);
                     }}
                     assignCallback={() => {
                         popupRef.current.openPopup();
-                        setCompanyAction({ action: "assign", title: "Company assignement" });
+                        setCompanyAction({ action: COMPANY_ACTIONS.ASSIGN.key, title: COMPANY_ACTIONS.ASSIGN.title });
                         setTargetCompany(item);
                     }}
                     previewCallback={() => {
                         popupRef.current.openPopup();
-                        setCompanyAction({ action: "preview", title: "Preview company" });
+                        setCompanyAction({ action: COMPANY_ACTIONS.PREVIEW.key, title: COMPANY_ACTIONS.PREVIEW.title });
                         setTargetCompany(item);
                     }}
                 />;
@@ -46,8 +46,8 @@ export const WrappedCompanyList = (props) => {
         return <div className='col-md-4'>
             <CustomButton onClick={(e) => {
                 popupRef.current.openPopup();
-                setCompanyAction({ action: "create", title: "Create company" });
-            }} label={<><i className='bi bi-plus-circle' />&nbsp;Add company</>} />
+                setCompanyAction({ action: COMPANY_ACTIONS.CREATE.key, title: COMPANY_ACTIONS.CREATE.title });
+            }} label={utils.labelIcon("bi bi-check-circle", "Add company")} />
         </div>
     }
 
@@ -61,33 +61,34 @@ export const WrappedCompanyList = (props) => {
 
     const popupChildren2beRendred = () => {
         switch (companyAction.action) {
-            case "create":
+            case COMPANY_ACTIONS.CREATE.key:
                 return <CreateCompany
                     successCallback={successCallbackFn}
                     errorCallback={(message) => toastRef.current.showToast({ type: "error", message })}
                     cancelCallback={() => popupRef.current.closePopup()}
                 />
-            case "edit":
+            case COMPANY_ACTIONS.EDIT.key:
                 return <EditCompany
                     company={targetCompany}
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
                     successCallback={successCallbackFn}
                     cancelCallback={() => popupRef.current.closePopup()}
                 />
-            case "delete":
+            case COMPANY_ACTIONS.DELETE.key:
                 return <DeleteCompany
                     company={targetCompany}
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
                     successCallback={successCallbackFn}
-                    cancelCallback={() => popupRef.current.closePopup()} />
-            case "assign":
+                    cancelCallback={() => popupRef.current.closePopup()}
+                />
+            case COMPANY_ACTIONS.ASSIGN.key:
                 return <CompanyAssignment
                     company={targetCompany}
                     errorCallback={(message, type) => toastRef.current.showToast({ type: type ? type : "error", message })}
                     successCallback={successCallbackFn}
                     cancelCallback={() => popupRef.current.closePopup()}
                 />
-            case "preview":
+            case COMPANY_ACTIONS.PREVIEW.key:
                 return <CompanyDetail
                     company={targetCompany}
                     cancelCallback={() => popupRef.current.closePopup()}
@@ -98,11 +99,31 @@ export const WrappedCompanyList = (props) => {
 
     return (
         <>
-            <DataTable header={jwtWorker.hasRole(utils.ROLES.Admin) ? <CreateCompanyBtn /> : "Company list"} columns={utils.COMPANY_LIST_COLUMNS} data={companies} />
+            <DataTable
+                header={jwtWorker.hasRole(utils.ROLES.Admin) ? <CreateCompanyBtn /> : "Company list"}
+                columns={COMPANY_LIST_COLUMNS}
+                data={companies} />
             <Popup ref={popupRef} title={companyAction.title}>
                 {popupChildren2beRendred()}
             </Popup>
             <ToastNotification ref={toastRef} />
         </>
     );
+}
+
+
+const COMPANY_LIST_COLUMNS = [
+    { label: "COMPANY TVA NUMBER", name: "tvaNumber" },
+    { label: "ADDRESS", name: "address" },
+    { label: "CREATION DATE", name: "createdAt" },
+    { label: "LAST UPDATE", name: "updatedAt" },
+    { label: "ACTIONS", name: "actions" }
+]
+
+const COMPANY_ACTIONS = {
+    CREATE: { key: "create", title: "Create company" },
+    EDIT: { key: "edit", title: "Edit company" },
+    DELETE: { key: "delete", title: "Delete company" },
+    ASSIGN: { key: "assign", title: "Company assignement" },
+    PREVIEW: { key: "preview", title: "Preview company" }
 }

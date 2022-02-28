@@ -6,7 +6,7 @@ export const SiderItem = (props) => {
     const history = useHistory();
     const { icon, route, label } = props;
 
-    function isActiveLink(route) {
+    const isActiveLink = (route) => {
         return `${history.location.pathname}` === route.split("?")[0];
     }
 

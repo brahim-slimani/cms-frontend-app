@@ -9,7 +9,7 @@ export const DeleteCompany = (props) => {
     const [loading, setLoading] = React.useState(false);
 
     /**
-     * handle delete submission
+     * Handle delete submission
      */
     const handleSubmit = () => {
         setLoading(true);
@@ -29,12 +29,14 @@ export const DeleteCompany = (props) => {
                 <CustomButton
                     label={utils.labelTemplate(utils.labelIcon("bi bi-check-circle", "submit"), loading, "Processing...")}
                     className="my-2"
-                    onClick={handleSubmit} />
+                    onClick={handleSubmit}
+                />
                 <CustomButton
                     label={utils.labelIcon("bi bi-x-circle", "Cancel")}
                     onClick={props.cancelCallback}
                     variant="outlined"
-                    color="error" />
+                    color="error"
+                />
             </div>
         </div>
     );
