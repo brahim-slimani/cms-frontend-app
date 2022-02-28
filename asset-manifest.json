@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cms-frontend-app/static/css/main.25bd90ec.css",
-    "main.js": "/cms-frontend-app/static/js/main.fb485494.js",
+    "main.js": "/cms-frontend-app/static/js/main.1907440e.js",
     "static/media/bootstrap-icons.woff?": "/cms-frontend-app/static/media/bootstrap-icons.c1d7432ee75fa194e499.woff",
     "static/media/bootstrap-icons.woff2?": "/cms-frontend-app/static/media/bootstrap-icons.a13b815539b49de48d23.woff2",
     "static/media/logo.svg": "/cms-frontend-app/static/media/logo.d55dd66530b9e57a0d85329bb6ede070.svg",
@@ -10,10 +10,10 @@
     "static/media/logo-light.svg": "/cms-frontend-app/static/media/logo-light.bf389adf558cd14b7413edf1db12d23f.svg",
     "index.html": "/cms-frontend-app/index.html",
     "main.25bd90ec.css.map": "/cms-frontend-app/static/css/main.25bd90ec.css.map",
-    "main.fb485494.js.map": "/cms-frontend-app/static/js/main.fb485494.js.map"
+    "main.1907440e.js.map": "/cms-frontend-app/static/js/main.1907440e.js.map"
   },
   "entrypoints": [
     "static/css/main.25bd90ec.css",
-    "static/js/main.fb485494.js"
+    "static/js/main.1907440e.js"
   ]
 }
